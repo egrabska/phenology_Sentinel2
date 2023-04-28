@@ -11,9 +11,9 @@ lapply(packages_list, require, character.only = TRUE)
 #1) Indices time series pre-processing and outlier removing (on .csv format acquired from GEE)
 
 #df is as csv format tab;e containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
-df =  read.csv("C:/Ewa/phenology_Sentinel2/mtci_2018_2022.csv")
+df =  read.csv("path to file")
 
-#first column convertet to date
+#first column converter to date
 df$system.index = as.Date(df$system.index, format =  "%Y%m%d")
 
 #change column names 
