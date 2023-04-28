@@ -1,8 +1,9 @@
-#This is the script for the paper ""  
+#This is the script for the paper "Sentinel-2 time series: a promising tool in monitoring individual species phenology and its variability"  
 #It includes: 
 # 1) indices time series pre-processing and outlier removing 
 # 2) modelling indices time series using GAM (for a single year)
 # 3) SOS detection using derivatives technique
+# you can use the example "mtci_example.csv" file 
 
 #required packages 
 packages_list = c("tidyverse", "tsibble", "bfast", "data.table", "mgcv","forecast", "anytime")
