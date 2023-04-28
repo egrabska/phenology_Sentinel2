@@ -1,12 +1,5 @@
----
-title: "Script to modelling LSP and SOS metrics from Sentinel-2 derived indices"
-author: "Ewa Grabska-Szwagrzyk"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+**Script to model LSP and detect SOS metrics from Sentinel-2 derived indices**
+author: **Ewa Grabska-Szwagrzyk**
 
 This script is used to calculate LSP (Land Surface Phenology) and detect SOS (start of season) in the paper *Sentinel-2 time series: a promising tool in monitoring individual species phenology and its variability* by Grabska-Szwagrzyk and Tymińska-Czabańska. 
 
