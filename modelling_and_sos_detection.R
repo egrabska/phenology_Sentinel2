@@ -76,7 +76,7 @@ gam_deriv = function(id_no, input_df, year){
 }
 
 #gam_deriv example for single pixel:
-sos_single = gam_deriv(id_no = 3199, input_df = df2, year = "2018")
+sos_single = gam_deriv(id_no = 3199, input_df = df_clean, year = "2018")
 
 #Example for many/all pixels:
 
@@ -84,7 +84,7 @@ sos_single = gam_deriv(id_no = 3199, input_df = df2, year = "2018")
 #only when minimum number of observations during the year is 16)
 
 year = "2018"
-single_year = df2 %>%
+single_year = df_clean %>%
   filter(date > paste(year, "03-15", sep = "-") & 
            date < paste(year, "11-20", sep = "-"))
 
