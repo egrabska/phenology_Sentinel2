@@ -48,9 +48,9 @@ gam_deriv = function(id_no, input_df, year){
     tsclean(iterate = 2) %>%
     as.data.frame()
   #creating regular (1-day) time series with NA for missing values
-  df_bfast = bfastts(df_ts$index, df_long$date, type = ("irregular"))
+  df_bfast = bfastts(df_ts$index, df$date, type = ("irregular"))
   #creating dataframe with proper date format
-  df_tibble = tibble(date = seq(as.Date(df_long$date[1]), by = "day", 
+  df_tibble = tibble(date = seq(as.Date(df$date[1]), by = "day", 
                                 length.out = length(df_bfast)), value = df_bfast) %>%
     as_tsibble(index = date) %>%
     ts() %>% 
