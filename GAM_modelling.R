@@ -11,7 +11,7 @@ lapply(packages_list, require, character.only = TRUE)
 #1) Indices time series pre-processing and outlier removing (on .csv format acquired from GEE)
 
 #df is as csv format tab;e containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
-df =  read.csv("F:/phenology_Sentinel2/mtci_2018_2022.csv")
+df =  read.csv("path to .csv file")
 
 #first column converter to date
 df$system.index = as.Date(df$system.index, format =  "%Y%m%d")
@@ -31,14 +31,8 @@ df_clean = df %>%
 
 #2) Modelling time series and detecting SOS/EOS based on derivatives for a single year--------
 
-#gam_deriv is a function to model time series for each pixel 
-#using GAM and detecting SOS dates based on derivatives
-#id_no is unique pixel ID, input_df is filtered dataframe and year is selected year (a character)
-
-unique(sel$id)
-input_df = df_clean
-id_no = 596
-
+#gam_model is a function to model time series for each pixel using GAM 
+#id_no is unique pixel ID, input_df is filtered dataframe 
 
 #function to model time series using GAM and detecting SOS dates based on derivatives
 gam_model = function(id_no, input_df){
@@ -79,7 +73,6 @@ ggplot(gam_single, aes(date, predicted))+
   geom_line()
 
 
-
 #Example for many pixels:
 
 #firstly, create a vector  of unique pixel IDs for analyzed year
@@ -90,7 +83,6 @@ IDs = df_clean %>%
   dplyr::filter(n > 80) %>%
   distinct(id) %>%
   pull(id)
-
 
 
 #then calculate gam_deriv function for all pixels using lapply
