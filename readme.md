@@ -18,5 +18,6 @@ It works like in the example below for single sample and one year:
 
 
 The second script, **GAM_modelling.R** allows to only calculate LSP based on GAM modelling (without SOS detection) for the whole analyzed period. 
+The example results for two species (BRZ is silver birch and DB is oak):
 
 ![](gam_modelling.jpeg)
