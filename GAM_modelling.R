@@ -4,16 +4,20 @@
 # 2) modelling indices time series using GAM
 # you can use the example "mtci_example.csv" file 
 
-#required packages 
-packages_list = c("tidyverse", "tsibble", "bfast", "data.table", "mgcv","forecast", "anytime")
-lapply(packages_list, require, character.only = TRUE)
+#install and load required packages using pacman package 
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load("tidyverse", "tsibble", "bfast", "data.table", "mgcv","forecast", 
+               "anytime")
 
 #1) Indices time series pre-processing and outlier removing (on .csv format acquired from GEE)
 
-#df is as csv format tab;e containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
+#df is as csv format table containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
 df =  read.csv("path to .csv file")
 
-#first column converter to date
+#actually there is one (first) unnecessary column in mtci_ex.csv with row id so just remove it:
+df = df[,-1]
+
+#now first column called system.index should be converted to date format
 df$system.index = as.Date(df$system.index, format =  "%Y%m%d")
 
 #change column names 
