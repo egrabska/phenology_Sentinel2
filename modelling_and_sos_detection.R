@@ -5,9 +5,10 @@
 # 3) SOS detection using derivatives technique
 # you can use the example "mtci_example.csv" file 
 
-#required packages 
-packages_list = c("tidyverse", "tsibble", "bfast", "data.table", "mgcv","forecast", "anytime")
-lapply(packages_list, require, character.only = TRUE)
+#install and load required packages using pacman package 
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load("tidyverse", "tsibble", "bfast", "data.table", "mgcv","forecast", 
+               "anytime")
 
 #1) Indices time series pre-processing and outlier removing (on .csv format acquired from GEE)
 
