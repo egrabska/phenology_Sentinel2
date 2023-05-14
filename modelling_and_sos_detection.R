@@ -58,7 +58,7 @@ gam_deriv = function(id_no, input_df, year){
     as_tsibble(index = date) %>%
     ts() %>% 
     as.data.frame()
-  #gam modelling with dates as predictor, 
+  #gam modelling with dates as predictor 
   model = gamm(df_tibble[,2] ~ s(date, k = 16), 
                data = df_tibble, method = "REML")
   #predicting values using GAM model
@@ -68,6 +68,7 @@ gam_deriv = function(id_no, input_df, year){
   names(der) = c("date", paste(id_no))
   der_long = der %>%
     gather("id", "value", 2:length(der))
+  #detectin maximum derivatives value
   sos = der_long %>% 
     slice(which.max(value))
   sos = sos[,c("date", "id")]
@@ -109,4 +110,4 @@ ggplot(sos_multi, aes(SOS, species))+
   geom_boxplot()+
   xlim(100, 160)
 
-write.csv2(sos_multi, "path")
+write.csv(sos_multi, "path")
