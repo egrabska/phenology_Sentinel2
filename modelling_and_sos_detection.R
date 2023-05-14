@@ -11,13 +11,16 @@ lapply(packages_list, require, character.only = TRUE)
 
 #1) Indices time series pre-processing and outlier removing (on .csv format acquired from GEE)
 
-#df is as csv format tab;e containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
+#df is as csv format containing variables (in this particular order): date, index value, sample (pixel) unique ID, species
 df =  read.csv("path to file")
 
-#first column converter to date
+#actually there is one (first) unnecessary column in mtci_ex.csv with row id so just remove it:
+df = df[,-1]
+
+#now first column called system.index should be converted to date format
 df$system.index = as.Date(df$system.index, format =  "%Y%m%d")
 
-#change column names 
+#and let's change column names 
 names(df) = c("date", "index", "id", "species")
 
 #filtering - removing NA and high/low values
