@@ -81,7 +81,7 @@ gam_deriv = function(id_no, input_df, year){
 }
 
 #gam_deriv example for single pixel:
-sos_single = gam_deriv(id_no = 3199, input_df = df_clean, year = "2018")
+sos_single = gam_deriv(3199, df_clean, year)
 
 #Example for many/all pixels:
 
@@ -101,7 +101,7 @@ IDs = single_year %>%
 
 #then calculate gam_deriv function for all pixels using lapply
 start = Sys.time()
-sos_multi = lapply(IDs[1:100], gam_deriv, single_year, "2018") %>%
+sos_multi = lapply(IDs[1:100], gam_deriv, single_year, year) %>%
   rbindlist()
 end = Sys.time()
 end-start
